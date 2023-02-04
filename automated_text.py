@@ -1,9 +1,9 @@
 import schedule
 import time
-from phone import phone_number
+from phone_number import phone_number
 import json, requests
-from weather_api_key import weather_api_key
-from text_api_key import text_api_key
+from getweather import weather
+from textbelt_api import textbelt
 
 
 weather_api_key = weather_api_key
@@ -13,6 +13,8 @@ url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+weathe
 
 request = requests.get(url)
 json = request.json()
+
+description = json.get("weather").get("light rain")
 
 #variable declartion for the if statements
 temp_min = json.get("main").get("temp_min")
@@ -43,9 +45,7 @@ def send_bad_weather_message():
 if temp_max > 65 < 75 and humidity < 70:
     send_good_weather_message()
 else:
-    send_bad_weather_message()
-    
-    
+    send_bad_weather_message()   
 
 def send_message_monday():
 

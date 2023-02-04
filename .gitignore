@@ -1,4 +1,4 @@
-text_api_key.py
-weather_api_key.py
-phone.py
+getweather.py
+textbelt_api.py 
+phone_number.py
 
